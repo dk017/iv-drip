@@ -56,24 +56,21 @@ const ContactForm = () => {
     },
   });
 
+  // Initialize EmailJS when component mounts
+  useEffect(() => {
+    initEmailJS();
+  }, []);
+
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     
     try {
       console.log("Form submitted with data:", data);
       
-      // Send to our backend API
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      // Send email using EmailJS
+      const result = await sendEmail(data);
       
-      const result = await response.json();
-      
-      if (!response.ok) {
+      if (!result.success) {
         throw new Error(result.message || 'Failed to submit form');
       }
       

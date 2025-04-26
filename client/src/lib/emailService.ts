@@ -1,10 +1,9 @@
 import emailjs from '@emailjs/browser';
 
-// EmailJS public keys (these don't need to be hidden as they are meant for client-side use)
-// Create a free account at emailjs.com to get these values
-const SERVICE_ID = 'default_service'; // replace with your EmailJS service ID
-const TEMPLATE_ID = 'template_default'; // replace with your EmailJS template ID
-const PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // replace with your EmailJS public key
+// Get EmailJS credentials from environment variables
+const SERVICE_ID = import.meta.env.EMAILJS_SERVICE_ID as string;
+const TEMPLATE_ID = import.meta.env.EMAILJS_TEMPLATE_ID as string;
+const PUBLIC_KEY = import.meta.env.EMAILJS_PUBLIC_KEY as string;
 
 export interface EmailParams {
   name: string;
