@@ -1,0 +1,67 @@
+▶️ PROJECT TYPE  
+Single-page, fully responsive marketing site (HTML, CSS, minimal vanilla JS).  
+No frameworks other than TailwindCSS CDN; use Alpine.js only if needed for small interactivity (smooth-scroll, mobile menu).
+
+▶️ BRAND INFORMATION  
+Business name: **Posh IV Hydration Services**  
+Tagline: “Luxury Drip Therapy — Anywhere in Denver”  
+Primary color: #8A2BE2 (royal purple)  
+Accent color: #D4AF7F (rose-gold)  
+Logo: text logo—white on purple; also output SVG in /assets.  
+Booking phone (tap-to-call): **303-503-4955**  
+Service region: Greater Denver metro; mobile visits + in-suite at 1234 Speer Blvd, Denver, CO 80219.  
+Google-Maps share link (use for map embed + driving directions button):  
+https://goo.gl/maps/YbNDXXXpQFvuA1234  ← *replace with actual share link once obtained*  
+
+▶️ PAGE LAYOUT & COPY  
+1. **Sticky nav** — links: Home • IV Drips • Benefits • Pricing • Reviews • FAQ • Book  
+   - collapse to hamburger <640 px.  
+2. **Hero** — full-viewport gradient (purple→rose); headline “Feel Better in 45 Minutes”; sub-headline “Nurse-driven IV therapy delivered to your door”; primary CTA “Book a Drip” → smooth-scroll to Pricing.  
+3. **About / Credentials**  
+   - 3-column info cards: Registered Nurses ✔️ | Board-Certified Medical Director ✔️ | Mobile & Lounge Options ✔️  
+4. **IV Drips Section** — grid of 6 cards (icon, name, benefits bulleted).  
+   - Myers Cocktail  
+   - Immunity Boost  
+   - Hangover Rescue  
+   - Beauty Glow  
+   - Migraine Relief  
+   - Athletic Recovery  
+   *Each card has a “Details” button that toggles a hidden div with ingredients list (use Alpine.js).*  
+5. **Benefits Block** — 4 icons with short copy (Fast Hydration, Vitamin Absorption, Headache Relief, Energy Lift).  
+6. **Pricing**  
+   | Package | Price | Notes |  
+   | Myers Cocktail | \$199 | In-suite \$179 |  
+   | Immunity Boost | \$189 | |  
+   | Hangover Rescue | \$179 | Evening surcharge +\$25 |  
+   | Beauty Glow | \$209 | Biotin boost |  
+   | Migraine Relief | \$189 | Includes Toradol |  
+   | Athletic Recovery | \$199 | EMS add-on +\$40 |  
+   CTA “Tap to Call / Text” + “Request Appointment” button (opens `tel:` / WhatsApp respectively).  
+7. **Reviews** — embed 3 Google review cards (use placeholder text & ★★★★★; mark TODO: swap with actual ID later).  
+8. **FAQ accordion** — 6 common questions (Is it safe? How long? Do I need prescription? etc.).  
+9. **Map & Contact** — embedded Google map 100 % width; address, phone, email `support@poshhydration.com`, hours: 9 am–9 pm daily.  
+10. **Footer** — logo, quick links, disclaimer: “These statements have not been evaluated by the FDA…”  
+
+▶️ INTERACTIVITY & UX  
+* Smooth-scroll for nav.  
+* When a CTA is clicked, auto-scroll target section and flash border to draw eye.  
+* All phone numbers use `tel:`; add `rel="nofollow noopener"` on external links.  
+
+▶️ SEO & OG  
+* Title: “Posh IV Hydration Services | Mobile Drip Therapy Denver”  
+* Meta description: “Registered nurses bring vitamin-rich IV drips to your home, hotel or office in Denver. Book now — feel revitalized in 45 minutes.”  
+* OpenGraph + Twitter Card tags (use hero image placeholder `/assets/hero.jpg`).  
+
+▶️ CODE QUALITY  
+* Semantic HTML5 sections, aria-labels on nav and accordion.  
+* Tailwind utility classes only; no inline `<style>`.  
+* Put all JS in `/assets/app.js`; debounce scroll; keep under 80 lines.  
+* Comment TODO markers where client-specific edits may be required.  
+
+▶️ DELIVERABLE  
+Return a complete project tree ready for Replit Deploy.  
+After generating, ask me if I’d like to:  
+1) adjust colors / copy,  
+2) upload real logo file,  
+3) connect Calendly for booking,  
+4) export zip.  
