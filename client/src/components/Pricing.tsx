@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { Button } from "@/components/ui/button";
+import BookingModal from "./BookingModal";
 
 interface PricingItem {
   package: string;
@@ -71,19 +72,29 @@ const Pricing = forwardRef<HTMLElement>((props, ref) => {
         </div>
         
         <div className="mt-10 text-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             <a 
               href="tel:303-503-4955" 
               className="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition flex items-center justify-center"
             >
               <i className="fas fa-phone mr-2"></i> Tap to Call
             </a>
+            
+            {/* Calendly booking modal */}
+            <div className="flex items-center justify-center">
+              <BookingModal 
+                buttonText="Book Online" 
+                buttonClassName="bg-secondary hover:bg-secondary/90 text-white font-bold py-3 px-6 rounded-full transition flex items-center justify-center w-full"
+                calendlyUrl="https://calendly.com/poshiv/iv-drip"
+              />
+            </div>
+            
             <a 
               href="https://wa.me/13035034955" 
               rel="nofollow noopener" 
               className="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-full transition flex items-center justify-center"
             >
-              <i className="fab fa-whatsapp mr-2"></i> Request Appointment
+              <i className="fab fa-whatsapp mr-2"></i> Request via WhatsApp
             </a>
           </div>
         </div>
