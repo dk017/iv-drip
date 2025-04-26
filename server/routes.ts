@@ -54,11 +54,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const { name, email, phone, serviceType, preferredDate, preferredTime, message, utm_source } = req.body;
       
-      // Here we would implement actual email sending logic
-      // For now, just logging the data
+      // Log the form submission
       console.log('Contact form submission:', {
         name, email, phone, serviceType, preferredDate, preferredTime, message, utm_source
       });
+      
+      // Import email functions - This is done here to prevent errors on startup if SendGrid key is missing
+      const { sendEmail, formatAppointmentEmail } = await import('./email');
+      
+      // Send email notification
+      const emailResult = await sendEmail({
+        to: 'support@poshhydration.com', // Replace with business email when in production
+        from: 'appointments@poshhydration.com', // Must be verified in SendGrid
+        subject: `New Appointment Request from ${name}`,
+        html: formatAppointmentEmail({
+          name, email, phone, serviceType, preferredDate, preferredTime, message, utm_source
+        })
+      });
+      
+      if (!emailResult.success) {
+        console.warn('Email sending failed:', emailResult.message);
+        // We still return success to the client since we've logged the request
+        // In production, you might want to handle this differently
+      }
       
       return res.status(200).json({ success: true, message: 'Form submitted successfully' });
     } catch (error) {

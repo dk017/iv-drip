@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -21,6 +21,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail, initEmailJS } from "../lib/emailService";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name is required" }),
@@ -59,13 +60,22 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Here you would implement EmailJS, Formspree, or your own backend API for email sending
-      // For demo purposes, we'll simulate success
-      
       console.log("Form submitted with data:", data);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send to our backend API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'Failed to submit form');
+      }
       
       toast({
         title: "Request Submitted",
