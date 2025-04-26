@@ -1,9 +1,32 @@
 import emailjs from '@emailjs/browser';
 
-// Get EmailJS credentials from environment variables
-const SERVICE_ID = import.meta.env.EMAILJS_SERVICE_ID as string;
-const TEMPLATE_ID = import.meta.env.EMAILJS_TEMPLATE_ID as string;
-const PUBLIC_KEY = import.meta.env.EMAILJS_PUBLIC_KEY as string;
+// We'll fetch these from the server
+let SERVICE_ID = '';
+let TEMPLATE_ID = '';
+let PUBLIC_KEY = '';
+
+// Fetch EmailJS configuration from server
+async function fetchEmailConfig() {
+  try {
+    const response = await fetch('/api/email-config');
+    if (!response.ok) {
+      throw new Error('Failed to fetch email configuration');
+    }
+    
+    const config = await response.json();
+    SERVICE_ID = config.serviceId;
+    TEMPLATE_ID = config.templateId;
+    PUBLIC_KEY = config.publicKey;
+    
+    // Initialize EmailJS with fetched key
+    emailjs.init(PUBLIC_KEY);
+    
+    return true;
+  } catch (error) {
+    console.error('Error fetching email configuration:', error);
+    return false;
+  }
+}
 
 export interface EmailParams {
   name: string;
@@ -18,6 +41,14 @@ export interface EmailParams {
 
 export async function sendEmail(params: EmailParams): Promise<{ success: boolean; message: string }> {
   try {
+    // Make sure we have the EmailJS configuration
+    if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+      const configSuccess = await fetchEmailConfig();
+      if (!configSuccess) {
+        throw new Error('Unable to fetch email configuration. Please try again later.');
+      }
+    }
+    
     // Format the serviceType to be more readable (convert "myerscocktail" to "Myers Cocktail")
     let formattedServiceType = params.serviceType;
     
@@ -84,6 +115,7 @@ export async function sendEmail(params: EmailParams): Promise<{ success: boolean
 }
 
 // Initialize EmailJS
-export function initEmailJS() {
-  emailjs.init(PUBLIC_KEY);
+export async function initEmailJS() {
+  // Fetch configuration from server and initialize EmailJS
+  await fetchEmailConfig();
 }

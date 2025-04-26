@@ -58,7 +58,10 @@ const ContactForm = () => {
 
   // Initialize EmailJS when component mounts
   useEffect(() => {
-    initEmailJS();
+    const initialize = async () => {
+      await initEmailJS();
+    };
+    initialize();
   }, []);
 
   const onSubmit = async (data: FormValues) => {
