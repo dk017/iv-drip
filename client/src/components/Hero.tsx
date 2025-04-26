@@ -20,12 +20,14 @@ const Hero = forwardRef<HTMLElement, HeroProps>(({ onCtaClick }, ref) => {
           <p className="text-xl md:text-2xl mb-10 font-light">
             Nurse-driven IV therapy delivered to your door
           </p>
-          <Button 
-            onClick={onCtaClick}
-            className="bg-white text-primary hover:bg-secondary hover:text-white transition py-6 px-8 rounded-full font-bold text-lg flex items-center justify-center shadow-lg transform hover:scale-105"
-          >
-            <span className="mx-auto">Book a Drip</span>
-          </Button>
+          <div className="flex justify-center">
+            <Button 
+              onClick={onCtaClick}
+              className="bg-white text-primary hover:bg-secondary hover:text-white transition py-6 px-8 rounded-full font-bold text-lg text-center shadow-lg transform hover:scale-105"
+            >
+              Book a Drip
+            </Button>
+          </div>
         </div>
       </div>
       <div className="absolute bottom-0 w-full">
