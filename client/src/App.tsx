@@ -9,6 +9,7 @@ import Credentials from "./components/Credentials";
 import IVDrips from "./components/IVDrips";
 import Benefits from "./components/Benefits";
 import Pricing from "./components/Pricing";
+import Gallery from "./components/Gallery";
 import Reviews from "./components/Reviews";
 import FAQ from "./components/FAQ";
 import Contact from "./components/Contact";
@@ -51,6 +52,7 @@ function App() {
         <IVDrips ref={(el) => (sectionsRef.current["ivdrips"] = el)} />
         <Benefits ref={(el) => (sectionsRef.current["benefits"] = el)} />
         <Pricing ref={(el) => (sectionsRef.current["pricing"] = el)} />
+        <Gallery ref={(el) => (sectionsRef.current["gallery"] = el)} />
         <Reviews ref={(el) => (sectionsRef.current["reviews"] = el)} />
         <FAQ ref={(el) => (sectionsRef.current["faq"] = el)} />
         <Contact ref={(el) => (sectionsRef.current["contact"] = el)} />

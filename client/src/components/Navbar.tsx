@@ -90,6 +90,13 @@ const Navbar = ({ onNavClick }: NavbarProps) => {
             Pricing
           </a>
           <a 
+            href="#gallery" 
+            onClick={(e) => { e.preventDefault(); handleNavClick("gallery"); }} 
+            className="text-gray-700 hover:text-primary transition font-montserrat text-sm font-medium"
+          >
+            Gallery
+          </a>
+          <a 
             href="#reviews" 
             onClick={(e) => { e.preventDefault(); handleNavClick("reviews"); }} 
             className="text-gray-700 hover:text-primary transition font-montserrat text-sm font-medium"
@@ -126,7 +133,7 @@ const Navbar = ({ onNavClick }: NavbarProps) => {
       {/* Mobile Navigation */}
       <div 
         className={`md:hidden bg-white shadow-lg absolute w-full transition-all duration-300 ease-in-out ${
-          mobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+          mobileMenuOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
         <div className="px-4 py-3 space-y-3">
@@ -157,6 +164,13 @@ const Navbar = ({ onNavClick }: NavbarProps) => {
             className="block text-gray-700 hover:text-primary font-medium"
           >
             Pricing
+          </a>
+          <a 
+            href="#gallery" 
+            onClick={(e) => { e.preventDefault(); handleNavClick("gallery"); }} 
+            className="block text-gray-700 hover:text-primary font-medium"
+          >
+            Gallery
           </a>
           <a 
             href="#reviews" 
