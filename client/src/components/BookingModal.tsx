@@ -11,14 +11,14 @@ interface BookingModalProps {
 const BookingModal = ({
   buttonText = "Book an Appointment",
   buttonClassName = "bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-full transition flex items-center justify-center",
-  calendlyUrl = "https://calendly.com/poshiv/iv-drip"
+  calendlyUrl = "https://calendly.com/dhineshkumar-r/30min",
 }: BookingModalProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     // Load Calendly script when modal opens
     if (isOpen) {
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.src = "https://assets.calendly.com/assets/external/widget.js";
       script.async = true;
       document.body.appendChild(script);
@@ -38,8 +38,8 @@ const BookingModal = ({
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[800px] h-[80vh] p-0">
-        <div 
-          className="calendly-inline-widget w-full h-full" 
+        <div
+          className="calendly-inline-widget w-full h-full"
           data-url={`${calendlyUrl}?hide_event_type_details=1&hide_gdpr_banner=1&background_color=f9f7ff&text_color=333333&primary_color=8A2BE2`}
         ></div>
       </DialogContent>

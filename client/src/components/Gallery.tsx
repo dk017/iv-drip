@@ -10,7 +10,7 @@ interface GalleryImage {
 
 const Gallery = forwardRef<HTMLElement>((props, ref) => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
-  
+
   // This would be replaced with real images from the business
   const galleryImages: GalleryImage[] = [
     {
@@ -19,7 +19,7 @@ const Gallery = forwardRef<HTMLElement>((props, ref) => {
       caption: "Our luxury IV therapy lounge"
     },
     {
-      src: "https://images.unsplash.com/photo-1631815588090-d1bcbe9a8dbe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      src: "https://images.unsplash.com/photo-1576602976047-174e57a47881?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       alt: "IV bag with vitamin infusion",
       caption: "Premium vitamin cocktails"
     },
@@ -44,7 +44,7 @@ const Gallery = forwardRef<HTMLElement>((props, ref) => {
       caption: "Mobile IV therapy - we come to you"
     }
   ];
-  
+
   return (
     <section ref={ref} id="gallery" className="py-16 bg-gray-50">
       <div className="container mx-auto px-6">
@@ -54,7 +54,7 @@ const Gallery = forwardRef<HTMLElement>((props, ref) => {
             Experience our premium IV therapy in elegant and comfortable surroundings
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {galleryImages.map((image, index) => (
             <Dialog key={index}>
@@ -77,10 +77,10 @@ const Gallery = forwardRef<HTMLElement>((props, ref) => {
               </DialogTrigger>
               <DialogContent className="sm:max-w-4xl p-0 bg-transparent border-none shadow-none">
                 <div className="relative w-full overflow-hidden rounded-xl bg-white shadow-2xl">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full object-contain max-h-[80vh]" 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full object-contain max-h-[80vh]"
                   />
                   {image.caption && (
                     <div className="absolute bottom-0 w-full bg-black bg-opacity-60 p-4">
@@ -92,10 +92,10 @@ const Gallery = forwardRef<HTMLElement>((props, ref) => {
             </Dialog>
           ))}
         </div>
-        
+
         <div className="text-center mt-10">
           <p className="text-gray-600 mb-6">
-            Visit our wellness location and experience the difference of Posh IV Hydration Services. 
+            Visit our wellness location and experience the difference of Posh IV Hydration Services.
             We pride ourselves on creating a comfortable, safe, and luxurious environment for all your IV therapy needs.
           </p>
           <Button className="bg-primary hover:bg-primary/90 mt-2">
